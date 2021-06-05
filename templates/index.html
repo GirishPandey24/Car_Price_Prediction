@@ -1,0 +1,65 @@
+<html>
+<head>
+	<title>Social Network Ads</title>
+</head>
+<body style="background-color:grey;">
+<center>
+	<h1>Car Price Prediction</h1>
+
+<div class="container text-center">
+	<form action="{{ url_for('predict')}}" method="post">
+	<form action="/predict" method="POST"><!--/predict uthaya @app.route se from app.py file-->
+		<h3>How Many Kilometers Drived?</h3>
+		<input id="third" name="km_driven" required="required">		
+
+		<h3>Enter Year</h3>
+		<input id="first" name="year" type="number" placeholder="Enter Year">
+
+		<h3>What Is the Fuel type?</h3>
+		<select name="fuel_type" id="fuel" required="required">
+                <option value="4">Petrol</option>
+                <option value="0">Diesel</option>
+                <option value="2">CNG</option>
+		<option value="3">LPG</option>
+		<option value="1">Electric</option>
+            	</select>
+		
+		<h3>Are you A Dealer or Individual</h3>
+		<select name="seller_type" id="resea" required="required">
+                <option value="0">Dealer</option>
+                <option value="1">Individual</option>
+		<option value="2">Trustmark Dealer</option>
+            	</select>
+	
+		<h3>Transmission type</h3>
+		<select name="transmission_mannual" id="research" required="required">
+                <option value="0">Manual Car</option>
+                <option value="1">Automatic Car</option>
+            	</select>
+		
+		<h3>How much owners previously had the car ?</h3>
+		<select name="owner" id="owner" required="required">
+                <option value="0">Fourth & Above Owner</option>
+                <option value="1">Second Owner</option>
+		<option value="2">Test Drive Car</option>
+                <option value="3">Third Owner</option>
+		<option value="4">First Owner</option>
+            	</select><br><br>
+
+		<button class='btn btn-success bg-nav'>Predict</button><!--btn-success due to this button color is green-->
+	</form>
+	<br><br><h3>{{ prediction_text }}<h3>
+</div>
+<div class="row">
+	{% if label %}
+		{% if label==1 %}
+			<h2 style="color":green>Will Purchase</h2>
+		{% else %}
+			<h2 style="color":red>Will Not Purchase</h2>
+		{% endif %}
+	{% endif %}
+</div>
+	
+</center>
+</body>
+</html>
