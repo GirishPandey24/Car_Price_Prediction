@@ -21,7 +21,7 @@ def home():
 
 
 standard_to=StandardScaler()
-@app.route('/predict',methods=['POST'])
+@app.route('/predict',methods=['POST','GET'])
 def predict():
     
     if request.method=='POST':
@@ -36,18 +36,11 @@ def predict():
        'owner_Test Drive Car':0, 'owner_Third Owner':0}
         
         
-
-        
-
         data = [float(x) for x in request.form.values()]
 
         dict1['km_driven']=data[0]
         year=2020-data[1]
         dict1['no_year']=year
-        #km_driven=int(request.form['km_driven'])
-        #km_driven2=np.log(km_driven)
-        #year=int(request.form['year'])
-
         
         
         if data[2] == 0:####data[2] 2 bcoz it occurs at index 2 ,0 bcoz in html diesel value is 0
@@ -97,9 +90,7 @@ def predict():
         print("==========================",data)
         print("=======================",result_data)
             
-        #age=request.form.get('age')
-        #salary=request.form.get('salary')
-
+        
         result=rf_random.predict([result_data])
         output=round(result[0],2)
         #return "The age is {} and the Salary is {}".format(age,salary)
